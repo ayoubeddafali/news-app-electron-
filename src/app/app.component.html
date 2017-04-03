@@ -1,0 +1,25 @@
+<p id="slug"> Get The latest News Around the World <b *ngIf="chosenExists()"> : {{ chosen }} </b> </p>
+<a id="home" *ngIf="!empty()" (click)="goHome()" class="btn-floating btn-large waves-effect waves-light red"><i class="large material-icons">home</i></a>
+
+<div *ngIf="empty()" materialize="carousel" class="carousel">
+    <a *ngFor="let new of news" (dblclick)="channelClicked(new)" class="carousel-item"><img class="image" src="{{new.image}}"></a>
+</div>
+
+<div *ngIf="!empty()">
+    <div class="row">
+        <div id="item" *ngFor="let item of channelDatas">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{item.urlToImage}}">
+                    <span class="card-title">{{ item.title }}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{ item.description }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="{{item.url}}" target="_blank">More information ..</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
